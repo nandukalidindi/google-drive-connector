@@ -15,14 +15,14 @@ class OAuth2:
 
 	def initialize_oauth2_session(self):
 		try:
-			self.oauth2_session = OAuth2Session(self.client_id, redirect_uri=self.redirect_uri, scope=self.scope)
+			self.session = OAuth2Session(self.client_id, redirect_uri=self.redirect_uri, scope=self.scope)
 		except:
-			self.oauth2_session = None
+			self.session = None
 
 
 	def get_authorization_url(self):
 		try:
-			auth_url, state = self.oauth2_session.authorization_url(OAUTH2_AUTH_URL)
+			auth_url, state = self.session.authorization_url(OAUTH2_AUTH_URL)
 		except:
 			auth_url = None
 
@@ -30,7 +30,7 @@ class OAuth2:
 
 	def fetch_access_token(self, auth_code):
 		try:
-			token_obj = self.oauth2_session.fetch_token(token_url=OAUTH2_TOKEN_URL, code=auth_code, client_secret=self.client_secret)
+			token_obj = self.session.fetch_token(token_url=OAUTH2_TOKEN_URL, code=auth_code, client_secret=self.client_secret)
 			access_token = token_obj.get('access_token')
 		except:
 			access_token = None
@@ -39,11 +39,11 @@ class OAuth2:
 
 	@staticmethod
 	def get_active_session(self):
-		if self.oauth2_session:
-			return self.oauth2_session
+		if self.session:
+			return self.session
 		else:
 			self.initialize_oauth2_session()
-			return self.oauth2_session
+			return self.session
 
 
 
