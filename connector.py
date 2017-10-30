@@ -3,9 +3,10 @@ from flask import Flask, render_template, request, redirect, session, jsonify
 from auth.oauth2 import OAuth2
 import pdb
 
-oauth2 = OAuth2(client_id, client_secret, redirect_uri, "DRIVE READONLY")
+oauth2 = OAuth2(client_id, client_secret, redirect_uri, "DRIVE_READONLY")
 
 app = Flask(__name__)
+app.debug = True
 app.secret_key = 'super secret key'
 
 @app.route('/')

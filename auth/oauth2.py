@@ -3,7 +3,17 @@ from requests_oauthlib import OAuth2Session
 OAUTH2_AUTH_URL = "https://accounts.google.com/o/oauth2/auth"
 OAUTH2_TOKEN_URL = "https://accounts.google.com/o/oauth2/token"
 
-SCOPE_DICT = { "DRIVE READONLY": "https://www.googleapis.com/auth/drive.readonly" }
+SCOPE_DICT = { 
+	"DRIVE_FULL": "https://www.googleapis.com/auth/drive",	
+	"DRIVE_READONLY": "https://www.googleapis.com/auth/drive.readonly",
+	"DRIVE_APP_FOLDER": "https://www.googleapis.com/auth/drive.appfolder",
+	"DRIVE_FILE": "https://www.googleapis.com/auth/drive.file",
+	"DRIVE_INSTALL": "https://www.googleapis.com/auth/drive.install",
+	"DRIVE_METADATA": "https://www.googleapis.com/auth/drive.metadata",
+	"DRIVE_METADATA_READONLY": "https://www.googleapis.com/auth/drive.metadata.readonly",
+	"DRIVE_PHOTOS_READONLY": "https://www.googleapis.com/auth/drive.photos.readonly",
+	"DRIVE_SCRIPTS": "https://www.googleapis.com/auth/drive.scripts"
+}
 
 class OAuth2:
 	def __init__(self, client_id, client_secret, redirect_uri, scope):
